@@ -12,10 +12,10 @@ test.describe('Inventory Page Tests', () => {
 
         await inventoryPage.sortProducts('az');
         const actualSorting = await inventoryPage.getProductNames();
-        console.log(actualSorting)
+        // console.log(actualSorting)
 
         const expectedSorting = [...actualSorting].sort((a, b) => a.localeCompare(b))
-        console.log(expectedSorting)
+        // console.log(expectedSorting)
 
         expect(actualSorting).toEqual(expectedSorting)
     });
@@ -27,10 +27,10 @@ test.describe('Inventory Page Tests', () => {
 
         await inventoryPage.sortProducts('za');
         const actualSorting = await inventoryPage.getProductNames();
-        console.log(actualSorting)
+        //console.log(actualSorting)
 
         const expectedSorting = [...actualSorting].sort((a, b) => b.localeCompare(a))
-        console.log(expectedSorting)
+        //console.log(expectedSorting)
 
         expect(actualSorting).toEqual(expectedSorting)
     });

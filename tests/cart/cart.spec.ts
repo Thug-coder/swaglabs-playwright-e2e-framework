@@ -7,10 +7,6 @@ test.describe('Shopping Cart Tests', () => {
         await inventoryPage.navigate(env.inventoryURL);
     });
 
-    test.afterAll(async ({ page }) => {
-        page.close();
-    });
-
     test('[@smoke] Verify products can be added to cart', async ({ page, inventoryPage, cartPage }) => {
 
         await inventoryPage.addProductToCart('Sauce Labs Backpack');

@@ -8,10 +8,6 @@ test.beforeEach(async ({ inventoryPage }) => {
     await inventoryPage.navigate(env.inventoryURL);
 })
 
-test.afterAll(async ({ page }) => {
-    await page.close();
-})
-
 test.describe('Checkout Tests', () => {
 
     test('[@smoke] Verify successful order placement', async ({ page, inventoryPage, cartPage, checkoutPage }) => {
@@ -39,10 +35,10 @@ test.describe('Checkout Tests', () => {
         await expect(page).toHaveURL(/checkout-complete.html/);
         await expect(checkoutPage.confirmationHeader).toHaveText('Thank you for your order!');
 
-        console.log(
-            'Download button count:',
-            await page.getByRole('button', { name: 'Generate PDF order' }).count()
-        );
+        // console.log(
+        //     'Download button count:',
+        //     await page.getByRole('button', { name: 'Generate PDF order' }).count()
+        // );
 
         const download = await DownloadHelper.downloadFile(page,async () => {
                 await page.getByRole('button', {
@@ -52,8 +48,6 @@ test.describe('Checkout Tests', () => {
         );
 
         const fileName = download.suggestedFilename();
-
-        console.log('Downloaded file:', fileName);
 
         await DownloadHelper.saveDownload(download,`test-results/downloads/${fileName}`);
     });

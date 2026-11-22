@@ -5,7 +5,4 @@ test('Verify environment configuration', async ({ page }) => {
     await page.goto(env.baseUrl);
 
     await expect(page).toHaveURL(/saucedemo/);
-
-    console.log('Base URL:', env.baseUrl);
-    console.log('Username:', env.credentials.standardUser);
 });

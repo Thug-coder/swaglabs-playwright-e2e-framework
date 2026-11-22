@@ -7,10 +7,6 @@ test.describe('Inventory Page Tests', () => {
         await inventoryPage.navigate(env.inventoryURL);
     });
 
-    test.afterAll(async ({page}) => {
-        await page.close();
-    })
-
     test('[@smoke] Verify product details are visible', async ({ inventoryPage,productDetailsPage })=>{
 
         await inventoryPage.goToProductDetailsPage('Sauce Labs Backpack');

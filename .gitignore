@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+
+# Environment variables
+.env
+.env.*
+
+!.env.example
+
+# Playwright authentication
+playwright/.auth/
+
+# Test results
+test-results/
+playwright-report/
+playwright/.cache/
+
+# Debug
+playwright-debug.log
+
+# IDE
+.vscode/

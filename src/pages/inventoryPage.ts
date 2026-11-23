@@ -46,6 +46,11 @@ export class InventoryPage {
         await this.menuIcon.click();
     }
 
+    async goToAboutPage(): Promise<void>{
+        await this.menuIcon.click();
+        await this.about.click();
+    }
+
     async logoutUser(): Promise<void> {
         await this.logout.click();
     }

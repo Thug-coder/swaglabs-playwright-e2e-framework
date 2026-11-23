@@ -32,4 +32,10 @@ test.describe('Inventory Page Tests', () => {
             expect(price).toMatch(/^\$\d+\.\d{2}$/);
         }
     });
+
+    test('Verify About Us page is displayed through Menu option', async ({inventoryPage, page}) => {
+        await inventoryPage.goToAboutPage();
+
+        await expect(page).toHaveURL('https://saucelabs.com/');
+    })
 });

@@ -1,4 +1,3 @@
-
 name: Playwright Tests
 
 on:
@@ -28,6 +27,23 @@ jobs:
 
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium firefox webkit
+
+      - name: Generate Linux Visual Baselines
+        run: npx playwright test tests/visual/login.visual.spec.ts --update-snapshots
+        env:
+          BASE_URL: ${{ vars.BASE_URL }}
+          INVENTORY_URL: ${{ vars.INVENTORY_URL }}
+          STANDARD_USER: ${{ secrets.STANDARD_USER }}
+          STANDARD_PASSWORD: ${{ secrets.STANDARD_PASSWORD }}
+          LOCKED_USER: ${{ secrets.LOCKED_USER }}
+
+      - name: Upload Visual Baselines
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: login-visual-baselines
+          path: tests/visual/login.visual.spec.ts-snapshots/
+          retention-days: 7
 
       - name: Run Playwright tests
         run: npx playwright test
